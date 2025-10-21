@@ -1,0 +1,6 @@
+Flask>=2.2
+pymongo>=4.0
+Flask-Login>=0.6
+dnspython>=2.0 # if using mongodb+srv URIs
+Werkzeug>=2.2
+python-dotenv
