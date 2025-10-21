@@ -21,7 +21,6 @@
       position: relative;
     }
 
-    /* ✅ Background image + blur effect with overlay for better contrast */
     body::before {
       content: "";
       position: absolute;
@@ -32,7 +31,7 @@
       background: url("{{ url_for('static', filename='imgs/fotFront.JPG') }}") no-repeat center center/cover;
       filter: blur(8px);
       z-index: -1;
-      transform: scale(1.05); /* Prevent edge blur cut-off */
+      transform: scale(1.05);
     }
 
     body::after {
@@ -42,7 +41,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.1); /* Light overlay for contrast */
+      background: rgba(0, 0, 0, 0.1);
       z-index: -1;
     }
 
@@ -50,7 +49,7 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(15px);
       border-radius: 25px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 123, 255, 0.1); /* Enhanced depth */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 123, 255, 0.1);
       padding: 40px;
       width: 100%;
       max-width: 400px;
@@ -58,7 +57,7 @@
       position: relative;
       z-index: 1;
       box-sizing: border-box;
-      animation: fadeIn 1s ease-in-out; /* Subtle fade-in animation */
+      animation: fadeIn 1s ease-in-out;
     }
 
     @keyframes fadeIn {
@@ -83,7 +82,7 @@
     .logo-text {
       font-size: 24px;
       font-weight: 700;
-      background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient for vibrancy */
+      background: linear-gradient(45deg, #007bff, #0056b3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -94,13 +93,13 @@
       font-weight: 700;
       color: #333;
       margin-bottom: 30px;
-      letter-spacing: 1px; /* Refined spacing */
+      letter-spacing: 1px;
     }
 
     .form-group {
+      position: relative;
       margin-bottom: 20px;
       text-align: left;
-      position: relative;
     }
 
     label {
@@ -112,10 +111,11 @@
 
     input {
       width: 100%;
-      padding: 12px 12px 12px 40px; /* Extra padding for icons */
+      padding: 12px 12px 12px 42px; /* leave space for icon */
       border: 1px solid #ddd;
       border-radius: 10px;
       font-size: 16px;
+      line-height: 1.5;
       box-sizing: border-box;
       transition: border-color 0.3s ease;
     }
@@ -128,22 +128,25 @@
     .form-group::before {
       content: "";
       position: absolute;
-      left: 12px;
       top: 50%;
+      left: 14px;
       transform: translateY(-50%);
       width: 20px;
       height: 20px;
       background-size: contain;
       background-repeat: no-repeat;
+      pointer-events: none;
       margin-top: 10px;
     }
 
-    .form-group:nth-child(1)::before { /* User icon for registration */
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    /* user icon */
+    .form-group:nth-of-type(1)::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
     }
 
-    .form-group:nth-child(2)::before { /* Lock icon for password */
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm3 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E");
+    /* lock icon */
+    .form-group:nth-of-type(2)::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 24 24'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm3 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E");
     }
 
     .privacy-link {
@@ -165,7 +168,7 @@
     .sign-in-btn {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient for premium look */
+      background: linear-gradient(45deg, #007bff, #0056b3);
       color: white;
       border: none;
       border-radius: 10px;
@@ -184,97 +187,18 @@
     .footer {
       margin-top: 30px;
       font-size: 12px;
-      color: rgba(136, 136, 136, 0.8); /* Slight opacity for subtlety */
+      color: rgba(136, 136, 136, 0.8);
     }
 
-    /* Responsive adjustments */
     @media (max-width: 600px) {
       .login-card {
-        padding: 20px;
+        padding: 25px;
         margin: 10px;
         max-width: 90%;
-        border-radius: 20px;
-      }
-
-      .logo img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .logo-text {
-        font-size: 20px;
-      }
-
-      .title {
-        font-size: 24px;
-        margin-bottom: 20px;
-        letter-spacing: 0.5px;
-      }
-
-      .form-group {
-        margin-bottom: 15px;
       }
 
       input {
-        padding: 10px 10px 10px 35px; /* Adjust for icons */
-        font-size: 14px;
-      }
-
-      .sign-in-btn {
-        padding: 10px;
-        font-size: 14px;
-      }
-
-      .footer {
-        font-size: 10px;
-        margin-top: 20px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .login-card {
-        padding: 15px;
-      }
-
-      .logo {
-        flex-direction: column;
-        margin-bottom: 15px;
-      }
-
-      .logo img {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-
-      .logo-text {
-        font-size: 18px;
-      }
-
-      .title {
-        font-size: 20px;
-      }
-
-      .privacy-link a {
-        font-size: 12px;
-      }
-    }
-
-    /* Accessibility: Reduce motion for users who prefer it */
-    @media (prefers-reduced-motion: reduce) {
-      .login-card {
-        animation: none;
-      }
-
-      .sign-in-btn {
-        transition: none;
-      }
-
-      input {
-        transition: none;
-      }
-
-      .privacy-link a {
-        transition: none;
+        padding: 10px 10px 10px 38px;
       }
     }
   </style>
