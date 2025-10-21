@@ -1,0 +1,7 @@
+DataBase email  :   ruzaiduojfot@gmail.com
+Atlas CLustor   :   UOJ
+STORAGE         :   512 MB
+Username        :   RuzaitFOT
+Password        :   2023ET139T03287
+Connection      :   mongodb+srv://RuzaitFOT:2023ET139T03287@uoj.exuwm4e.mongodb.net/?retryWrites=true&w=majority&appName=UOJ
+google colab    :   Student Portal.ipynb
