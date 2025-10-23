@@ -144,7 +144,7 @@
           </svg>
         </button>
 
-        <a href="#" class="hidden sm:block btn-gradient px-3 py-2 lg:px-4 lg:py-2 rounded-lg text-sm font-medium">Admin Login</a>
+        <a href="{{ url_for('admin_login') }}" class="hidden sm:block btn-gradient px-3 py-2 lg:px-4 lg:py-2 rounded-lg text-sm font-medium">Admin Login</a>
       </div>
     </div>
 
@@ -155,7 +155,7 @@
         <li><a href="#about" class="hover:text-cyan-500">About</a></li>
         <li><a href="#notices" class="hover:text-cyan-500">Notices</a></li>
         <li><a href="#academic-docs" class="hover:text-cyan-500">Documents</a></li>
-        <li><a href="#" class="btn-gradient px-3 py-2 rounded-lg text-sm">Admin Login</a></li>
+        <li><a href="{{ url_for('admin_login') }}" class="btn-gradient px-3 py-2 rounded-lg text-sm">Admin Login</a></li>
       </ul>
     </div>
   </nav>
@@ -172,7 +172,7 @@
         </p>
         <div data-aos="zoom-in" class="flex flex-col sm:flex-row gap-4">
           <a href="{{ url_for('student_login') }}" class="btn-gradient px-5 py-2 rounded-lg">Student Login</a>
-          <a href="#" class="px-5 py-2 rounded-lg border border-white hover:bg-white hover:text-black transition">Educator Login</a>
+          <a href="{{ url_for('lecture_login') }}" class="px-5 py-2 rounded-lg border border-white hover:bg-white hover:text-black transition">Educator Login</a>
         </div>
       </div>
     </div>

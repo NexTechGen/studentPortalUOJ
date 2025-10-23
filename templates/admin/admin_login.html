@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student | Login</title>
+  <title>Admin | Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -210,11 +210,11 @@
       <img src="{{ url_for('static', filename='imgs/UOJ_Logo.png') }}" alt="Logo">
       <span class="logo-text">FOT | UOJ</span>
     </div>
-    <h1 class="title">Student Login</h1>
+    <h1 class="title">Admin Login</h1>
     <form>
       <div class="form-group">
-        <label for="reg-no">Registration No</label>
-        <input type="text" id="reg-no" placeholder="Enter Your Registration No.">
+        <label for="reg-no">User Name</label>
+        <input type="text" id="reg-no" placeholder="Enter Your User Name">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -223,7 +223,7 @@
       <div class="privacy-link">
         <a href="#">Privacy & Policy</a>
       </div>
-      <button type="submit" class="sign-in-btn">Sign In</button>
+      <button type="submit" class="sign-in-btn">Login</button>
     </form>
     <div class="footer">
       Copyright © All Rights Reserved. <br>Faculty of Technology | University of Jaffna.

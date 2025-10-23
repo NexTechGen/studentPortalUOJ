@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student | Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("{{ url_for('static', filename='imgs/fotFront.JPG') }}") no-repeat center center/cover;
+      filter: blur(8px);
+      z-index: -1;
+      transform: scale(1.05);
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: -1;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 123, 255, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 12px 12px 42px; /* leave space for icon */
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .form-group::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      margin-top: 10px;
+    }
+
+    /* user icon */
+    .form-group:nth-of-type(1)::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 24 24'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    }
+
+    /* lock icon */
+    .form-group:nth-of-type(2)::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 24 24'%3E%3Cpath d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm3 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z'/%3E%3C/svg%3E");
+    }
+
+    .privacy-link {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .privacy-link a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .privacy-link a:hover {
+      color: #0056b3;
+    }
+
+    .sign-in-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .sign-in-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: rgba(136, 136, 136, 0.8);
+    }
+
+    @media (max-width: 600px) {
+      .login-card {
+        padding: 25px;
+        margin: 10px;
+        max-width: 90%;
+      }
+
+      input {
+        padding: 10px 10px 10px 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-card">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='imgs/UOJ_Logo.png') }}" alt="Logo">
+      <span class="logo-text">FOT | UOJ</span>
+    </div>
+    <h1 class="title">Student Login</h1>
+    <form>
+      <div class="form-group">
+        <label for="reg-no">Registration No</label>
+        <input type="text" id="reg-no" placeholder="Enter Your Registration No.">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter Your Password">
+      </div>
+      <div class="privacy-link">
+        <a href="#">Privacy & Policy</a>
+      </div>
+      <button type="submit" class="sign-in-btn">Login</button>
+    </form>
+    <div class="footer">
+      Copyright © All Rights Reserved. <br>Faculty of Technology | University of Jaffna.
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
